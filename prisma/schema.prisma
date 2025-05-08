@@ -17,7 +17,7 @@ model Property {
   id             Int   @id @default(autoincrement())
   titulo         String
   descripcion    String?
-  imagen         String
+  imagen         String @db.MediumText
   banos          Int
   habitaciones   Int
   garajes        Int
