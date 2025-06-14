@@ -8,4 +8,5 @@ export declare class CreatePropertyDto {
     amueblado: boolean;
     ciudad: string;
     metrosCuadrados: number;
+    userId: number;
 }

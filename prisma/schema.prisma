@@ -14,16 +14,25 @@ datasource db {
 }
 
 model Property {
-  id             Int   @id @default(autoincrement())
-  titulo         String
-  descripcion    String?
-  imagen         String @db.MediumText
-  banos          Int
-  habitaciones   Int
-  garajes        Int
-  amueblado      Boolean
-  ciudad         String
+  id              Int      @id @default(autoincrement())
+  titulo          String
+  descripcion     String?
+  imagen          String   @db.MediumText
+  banos           Int
+  habitaciones    Int
+  garajes         Int
+  amueblado       Boolean
+  ciudad          String
   metrosCuadrados Float
-  createdAt      DateTime @default(now())
-  updatedAt      DateTime @updatedAt
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  userId          Int
+  user            User     @relation(fields: [userId], references: [id])
+}
+
+model User {
+  id         Int        @id @default(autoincrement())
+  email      String     @unique
+  password   String
+  properties Property[]
 }

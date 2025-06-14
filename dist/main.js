@@ -10,15 +10,16 @@ async function bootstrap() {
         whitelist: true,
     }));
     const config = new swagger_1.DocumentBuilder()
-        .setTitle('Cats example')
-        .setDescription('The cats API description')
+        .setTitle('HouseFinder API')
+        .setDescription('Documentación de la API de propiedades y usuarios')
         .setVersion('1.0')
-        .addTag('cats')
+        .addTag('auth')
+        .addTag('properties')
         .build();
-    const documentFactory = () => swagger_1.SwaggerModule.createDocument(app, config);
-    swagger_1.SwaggerModule.setup('api', app, documentFactory);
+    const document = swagger_1.SwaggerModule.createDocument(app, config);
+    swagger_1.SwaggerModule.setup('api', app, document);
     app.enableCors({
-        origin: 'http://localhost:5713',
+        origin: '*',
     });
     await app.listen(process.env.PORT ?? 3000);
 }

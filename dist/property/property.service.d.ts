@@ -15,6 +15,7 @@ export declare class PropertyService {
         amueblado: boolean;
         ciudad: string;
         metrosCuadrados: number;
+        userId: number;
         id: number;
         createdAt: Date;
         updatedAt: Date;

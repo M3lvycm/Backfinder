@@ -14,6 +14,7 @@ export declare class PropertyController {
         amueblado: boolean;
         ciudad: string;
         metrosCuadrados: number;
+        userId: number;
         id: number;
         createdAt: Date;
         updatedAt: Date;
@@ -28,6 +29,7 @@ export declare class PropertyController {
         amueblado: boolean;
         ciudad: string;
         metrosCuadrados: number;
+        userId: number;
         id: number;
         createdAt: Date;
         updatedAt: Date;
@@ -42,6 +44,7 @@ export declare class PropertyController {
         amueblado: boolean;
         ciudad: string;
         metrosCuadrados: number;
+        userId: number;
         id: number;
         createdAt: Date;
         updatedAt: Date;
@@ -56,6 +59,7 @@ export declare class PropertyController {
         amueblado: boolean;
         ciudad: string;
         metrosCuadrados: number;
+        userId: number;
         id: number;
         createdAt: Date;
         updatedAt: Date;
@@ -70,6 +74,7 @@ export declare class PropertyController {
         amueblado: boolean;
         ciudad: string;
         metrosCuadrados: number;
+        userId: number;
         id: number;
         createdAt: Date;
         updatedAt: Date;

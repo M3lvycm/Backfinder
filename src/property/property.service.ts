@@ -8,8 +8,17 @@ import { Property } from '@prisma/client';
 export class PropertyService {
   constructor(private prisma: PrismaService) {}
   create(property: CreatePropertyDto) {
-    return this.prisma.property.create({ data: property });
+    const { userId, ...rest } = property;
+    return this.prisma.property.create({
+      data: {
+        ...rest,
+        user: {
+          connect: { id: userId },
+        },
+      },
+    });
   }
+  
 
   findAll(): Promise<Property[]> {
     return this.prisma.property.findMany();

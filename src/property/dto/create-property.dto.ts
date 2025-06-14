@@ -8,6 +8,7 @@ import {
 } from 'class-validator';
 
 export class CreatePropertyDto {
+
   @IsString()
   @IsNotEmpty()
   titulo: string;
@@ -43,4 +44,5 @@ export class CreatePropertyDto {
   @IsNumber()
   @IsNotEmpty()
   metrosCuadrados: number;
+  userId: number; 
 }

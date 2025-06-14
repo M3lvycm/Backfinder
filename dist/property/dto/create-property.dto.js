@@ -21,6 +21,7 @@ class CreatePropertyDto {
     amueblado;
     ciudad;
     metrosCuadrados;
+    userId;
 }
 exports.CreatePropertyDto = CreatePropertyDto;
 __decorate([

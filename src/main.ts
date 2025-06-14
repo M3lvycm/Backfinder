@@ -5,22 +5,29 @@ import { ValidationPipe } from '@nestjs/common';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
+
+  // Validaciones globales
   app.useGlobalPipes(
     new ValidationPipe({
       whitelist: true,
     }),
   );
-  const config = new DocumentBuilder()
-    .setTitle('Cats example')
-    .setDescription('The cats API description')
-    .setVersion('1.0')
-    .addTag('cats')
-    .build();
-  const documentFactory = () => SwaggerModule.createDocument(app, config);
-  SwaggerModule.setup('api', app, documentFactory);
 
+  // Configuración Swagger
+  const config = new DocumentBuilder()
+    .setTitle('HouseFinder API')
+    .setDescription('Documentación de la API de propiedades y usuarios')
+    .setVersion('1.0')
+    .addTag('auth')
+    .addTag('properties')
+    .build();
+    
+  const document = SwaggerModule.createDocument(app, config);
+  SwaggerModule.setup('api', app, document);
+
+  // Habilitar CORS
   app.enableCors({
-    origin: 'http://localhost:5713',
+    origin: '*',
   });
 
   await app.listen(process.env.PORT ?? 3000);
