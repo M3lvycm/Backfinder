@@ -7,7 +7,11 @@ import {
   Param,
   Delete,
   NotFoundException,
+  UseGuards,
+  Request,
+  Req,
 } from '@nestjs/common';
+import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
 import { PropertyService } from './property.service';
 import { CreatePropertyDto } from './dto/create-property.dto';
 import { UpdatePropertyDto } from './dto/update-property.dto';
@@ -16,18 +20,24 @@ import { UpdatePropertyDto } from './dto/update-property.dto';
 export class PropertyController {
   constructor(private readonly propertyService: PropertyService) {}
 
+  @UseGuards(JwtAuthGuard)
   @Post()
-  create(@Body() property: CreatePropertyDto) {
-    return this.propertyService.create(property);
+  create(@Body() property: CreatePropertyDto, @Request() req) {
+    // Aquí asignamos el userId del usuario logueado, no lo recibimos en el body
+    return this.propertyService.create({ ...property, userId: req.user.userId });
   }
 
   @Get()
-  findAll() {
+  @UseGuards(JwtAuthGuard)
+  findAll(@Req() req: any) {
+    console.log(req.user);
+
     return this.propertyService.findAll();
   }
 
   @Get(':id')
-  async findOne(@Param('id') id: string) {
+  async findOne(@Req() req: Request,@Param('id') id: string) {
+    console.log(req);
     const propertyFound = await this.propertyService.findPropertyByID(
       Number(id),
     );
@@ -35,18 +45,26 @@ export class PropertyController {
       throw new NotFoundException(`Property with ID ${id} not found`);
     return propertyFound;
   }
+  @UseGuards(JwtAuthGuard)
+  @Get('user/:userId')
+  findByUserId(@Param('userId') userId: string) {
+    return this.propertyService.findByUserId(Number(userId));
+  }
 
+  @UseGuards(JwtAuthGuard)
   @Put(':id')
-  update(@Param('id') id: string, @Body() data: UpdatePropertyDto) {
-    return this.propertyService.update(Number(id), data);
+  update(
+    @Param('id') id: string,
+    @Body() data: UpdatePropertyDto,
+    @Request() req,
+  ) {
+    return this.propertyService.update(Number(id), data, req.user.userId);
+  }
+  
+  @UseGuards(JwtAuthGuard)
+  @Delete(':id')
+  remove(@Param('id') id: string, @Request() req) {
+    return this.propertyService.remove(Number(id), req.user.userId);
   }
 
-  @Delete(':id')
-  async remove(@Param('id') id: string) {
-    try {
-      return await this.propertyService.remove(Number(id));
-    } catch (error) {
-      throw new NotFoundException(`Property with ID ${id} not found`);
-    }
-  }
 }

@@ -11,6 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.PropertyService = void 0;
 const common_1 = require("@nestjs/common");
+const common_2 = require("@nestjs/common");
 const prisma_service_1 = require("../prisma.service");
 let PropertyService = class PropertyService {
     prisma;
@@ -31,6 +32,13 @@ let PropertyService = class PropertyService {
     findAll() {
         return this.prisma.property.findMany();
     }
+    findByUserId(userId) {
+        return this.prisma.property.findMany({
+            where: {
+                userId,
+            },
+        });
+    }
     findPropertyByID(id) {
         return this.prisma.property.findUnique({
             where: {
@@ -38,19 +46,23 @@ let PropertyService = class PropertyService {
             },
         });
     }
-    update(id, data) {
+    async update(id, data, userId) {
+        const property = await this.prisma.property.findUnique({ where: { id } });
+        if (!property || property.userId !== userId) {
+            throw new common_2.ForbiddenException('No puedes editar esta propiedad');
+        }
         return this.prisma.property.update({
-            where: {
-                id,
-            },
+            where: { id },
             data,
         });
     }
-    remove(id) {
+    async remove(id, userId) {
+        const property = await this.prisma.property.findUnique({ where: { id } });
+        if (!property || property.userId !== userId) {
+            throw new common_2.ForbiddenException('No puedes eliminar esta propiedad');
+        }
         return this.prisma.property.delete({
-            where: {
-                id,
-            },
+            where: { id },
         });
     }
 };

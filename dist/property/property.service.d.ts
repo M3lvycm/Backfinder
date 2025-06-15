@@ -21,7 +21,36 @@ export declare class PropertyService {
         updatedAt: Date;
     }, never, import("@prisma/client/runtime/library").DefaultArgs, import(".prisma/client").Prisma.PrismaClientOptions>;
     findAll(): Promise<Property[]>;
+    findByUserId(userId: number): Promise<Property[]>;
     findPropertyByID(id: number): Promise<Property | null>;
-    update(id: number, data: UpdatePropertyDto): Promise<Property>;
-    remove(id: number): Promise<Property>;
+    update(id: number, data: UpdatePropertyDto, userId: number): Promise<{
+        titulo: string;
+        descripcion: string | null;
+        imagen: string;
+        banos: number;
+        habitaciones: number;
+        garajes: number;
+        amueblado: boolean;
+        ciudad: string;
+        metrosCuadrados: number;
+        userId: number;
+        id: number;
+        createdAt: Date;
+        updatedAt: Date;
+    }>;
+    remove(id: number, userId: number): Promise<{
+        titulo: string;
+        descripcion: string | null;
+        imagen: string;
+        banos: number;
+        habitaciones: number;
+        garajes: number;
+        amueblado: boolean;
+        ciudad: string;
+        metrosCuadrados: number;
+        userId: number;
+        id: number;
+        createdAt: Date;
+        updatedAt: Date;
+    }>;
 }

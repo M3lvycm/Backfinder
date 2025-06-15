@@ -14,6 +14,7 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.PropertyController = void 0;
 const common_1 = require("@nestjs/common");
+const jwt_auth_guard_1 = require("../auth/jwt-auth.guard");
 const property_service_1 = require("./property.service");
 const create_property_dto_1 = require("./dto/create-property.dto");
 const update_property_dto_1 = require("./dto/update-property.dto");
@@ -22,65 +23,82 @@ let PropertyController = class PropertyController {
     constructor(propertyService) {
         this.propertyService = propertyService;
     }
-    create(property) {
-        return this.propertyService.create(property);
+    create(property, req) {
+        return this.propertyService.create({ ...property, userId: req.user.userId });
     }
-    findAll() {
+    findAll(req) {
+        console.log(req.user);
         return this.propertyService.findAll();
     }
-    async findOne(id) {
+    async findOne(req, id) {
+        console.log(req);
         const propertyFound = await this.propertyService.findPropertyByID(Number(id));
         if (!propertyFound)
             throw new common_1.NotFoundException(`Property with ID ${id} not found`);
         return propertyFound;
     }
-    update(id, data) {
-        return this.propertyService.update(Number(id), data);
+    findByUserId(userId) {
+        return this.propertyService.findByUserId(Number(userId));
     }
-    async remove(id) {
-        try {
-            return await this.propertyService.remove(Number(id));
-        }
-        catch (error) {
-            throw new common_1.NotFoundException(`Property with ID ${id} not found`);
-        }
+    update(id, data, req) {
+        return this.propertyService.update(Number(id), data, req.user.userId);
+    }
+    remove(id, req) {
+        return this.propertyService.remove(Number(id), req.user.userId);
     }
 };
 exports.PropertyController = PropertyController;
 __decorate([
+    (0, common_1.UseGuards)(jwt_auth_guard_1.JwtAuthGuard),
     (0, common_1.Post)(),
     __param(0, (0, common_1.Body)()),
+    __param(1, (0, common_1.Request)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [create_property_dto_1.CreatePropertyDto]),
+    __metadata("design:paramtypes", [create_property_dto_1.CreatePropertyDto, Object]),
     __metadata("design:returntype", void 0)
 ], PropertyController.prototype, "create", null);
 __decorate([
     (0, common_1.Get)(),
+    (0, common_1.UseGuards)(jwt_auth_guard_1.JwtAuthGuard),
+    __param(0, (0, common_1.Req)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", []),
+    __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", void 0)
 ], PropertyController.prototype, "findAll", null);
 __decorate([
     (0, common_1.Get)(':id'),
-    __param(0, (0, common_1.Param)('id')),
+    __param(0, (0, common_1.Req)()),
+    __param(1, (0, common_1.Param)('id')),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String]),
+    __metadata("design:paramtypes", [Object, String]),
     __metadata("design:returntype", Promise)
 ], PropertyController.prototype, "findOne", null);
 __decorate([
+    (0, common_1.UseGuards)(jwt_auth_guard_1.JwtAuthGuard),
+    (0, common_1.Get)('user/:userId'),
+    __param(0, (0, common_1.Param)('userId')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", void 0)
+], PropertyController.prototype, "findByUserId", null);
+__decorate([
+    (0, common_1.UseGuards)(jwt_auth_guard_1.JwtAuthGuard),
     (0, common_1.Put)(':id'),
     __param(0, (0, common_1.Param)('id')),
     __param(1, (0, common_1.Body)()),
+    __param(2, (0, common_1.Request)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String, update_property_dto_1.UpdatePropertyDto]),
+    __metadata("design:paramtypes", [String, update_property_dto_1.UpdatePropertyDto, Object]),
     __metadata("design:returntype", void 0)
 ], PropertyController.prototype, "update", null);
 __decorate([
+    (0, common_1.UseGuards)(jwt_auth_guard_1.JwtAuthGuard),
     (0, common_1.Delete)(':id'),
     __param(0, (0, common_1.Param)('id')),
+    __param(1, (0, common_1.Request)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String]),
-    __metadata("design:returntype", Promise)
+    __metadata("design:paramtypes", [String, Object]),
+    __metadata("design:returntype", void 0)
 ], PropertyController.prototype, "remove", null);
 exports.PropertyController = PropertyController = __decorate([
     (0, common_1.Controller)('property'),
