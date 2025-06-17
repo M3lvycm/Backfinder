@@ -49,7 +49,7 @@ export declare class PropertyController {
         updatedAt: Date;
         userId: number;
     }>;
-    findByUserId(userId: string): Promise<{
+    findByUserId(req: any): Promise<{
         id: number;
         titulo: string;
         descripcion: string | null;

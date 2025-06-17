@@ -34,9 +34,7 @@ let PropertyService = class PropertyService {
     }
     findByUserId(userId) {
         return this.prisma.property.findMany({
-            where: {
-                userId,
-            },
+            where: { userId },
         });
     }
     findPropertyByID(id) {

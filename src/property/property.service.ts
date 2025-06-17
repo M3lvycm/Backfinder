@@ -24,14 +24,11 @@ export class PropertyService {
     return this.prisma.property.findMany();
   }
 
-  findByUserId(userId: number): Promise<Property[]> {
-    return this.prisma.property.findMany({ 
-      where: {
-        userId,
-      },
-    });
-  }
-
+ findByUserId(userId: number): Promise<Property[]> {
+  return this.prisma.property.findMany({
+    where: { userId },
+  });
+}
   findPropertyByID(id: number): Promise<Property | null> {
     return this.prisma.property.findUnique({
       where: {

@@ -46,9 +46,9 @@ export class PropertyController {
     return propertyFound;
   }
   @UseGuards(JwtAuthGuard)
-  @Get('user/:userId')
-  findByUserId(@Param('userId') userId: string) {
-    return this.propertyService.findByUserId(Number(userId));
+  @Get('by-user')
+  findByUserId(@Req() req:any) {
+    return this.propertyService.findByUserId(Number(req.user.userId));
   }
 
   @UseGuards(JwtAuthGuard)
