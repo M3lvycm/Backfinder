@@ -5,7 +5,6 @@ export declare class PropertyController {
     private readonly propertyService;
     constructor(propertyService: PropertyService);
     create(property: CreatePropertyDto, req: any): import(".prisma/client").Prisma.Prisma__PropertyClient<{
-        id: number;
         titulo: string;
         descripcion: string | null;
         imagen: string;
@@ -15,12 +14,12 @@ export declare class PropertyController {
         amueblado: boolean;
         ciudad: string;
         metrosCuadrados: number;
+        userId: number;
+        id: number;
         createdAt: Date;
         updatedAt: Date;
-        userId: number;
     }, never, import("@prisma/client/runtime/library").DefaultArgs, import(".prisma/client").Prisma.PrismaClientOptions>;
     findAll(req: any): Promise<{
-        id: number;
         titulo: string;
         descripcion: string | null;
         imagen: string;
@@ -30,12 +29,12 @@ export declare class PropertyController {
         amueblado: boolean;
         ciudad: string;
         metrosCuadrados: number;
+        userId: number;
+        id: number;
         createdAt: Date;
         updatedAt: Date;
-        userId: number;
     }[]>;
     findByUserId(req: any): Promise<{
-        id: number;
         titulo: string;
         descripcion: string | null;
         imagen: string;
@@ -45,12 +44,12 @@ export declare class PropertyController {
         amueblado: boolean;
         ciudad: string;
         metrosCuadrados: number;
+        userId: number;
+        id: number;
         createdAt: Date;
         updatedAt: Date;
-        userId: number;
     }[]>;
     update(id: string, data: UpdatePropertyDto, req: any): Promise<{
-        id: number;
         titulo: string;
         descripcion: string | null;
         imagen: string;
@@ -60,12 +59,12 @@ export declare class PropertyController {
         amueblado: boolean;
         ciudad: string;
         metrosCuadrados: number;
+        userId: number;
+        id: number;
         createdAt: Date;
         updatedAt: Date;
-        userId: number;
     }>;
     remove(id: string, req: any): Promise<{
-        id: number;
         titulo: string;
         descripcion: string | null;
         imagen: string;
@@ -75,8 +74,9 @@ export declare class PropertyController {
         amueblado: boolean;
         ciudad: string;
         metrosCuadrados: number;
+        userId: number;
+        id: number;
         createdAt: Date;
         updatedAt: Date;
-        userId: number;
     }>;
 }

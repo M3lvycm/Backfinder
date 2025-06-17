@@ -6,7 +6,6 @@ export declare class PropertyService {
     private prisma;
     constructor(prisma: PrismaService);
     create(property: CreatePropertyDto): import(".prisma/client").Prisma.Prisma__PropertyClient<{
-        id: number;
         titulo: string;
         descripcion: string | null;
         imagen: string;
@@ -16,14 +15,14 @@ export declare class PropertyService {
         amueblado: boolean;
         ciudad: string;
         metrosCuadrados: number;
+        userId: number;
+        id: number;
         createdAt: Date;
         updatedAt: Date;
-        userId: number;
     }, never, import("@prisma/client/runtime/library").DefaultArgs, import(".prisma/client").Prisma.PrismaClientOptions>;
     findAll(): Promise<Property[]>;
     findByUserId(userId: number): Promise<Property[]>;
     update(id: number, data: UpdatePropertyDto, userId: number): Promise<{
-        id: number;
         titulo: string;
         descripcion: string | null;
         imagen: string;
@@ -33,12 +32,12 @@ export declare class PropertyService {
         amueblado: boolean;
         ciudad: string;
         metrosCuadrados: number;
+        userId: number;
+        id: number;
         createdAt: Date;
         updatedAt: Date;
-        userId: number;
     }>;
     remove(id: number, userId: number): Promise<{
-        id: number;
         titulo: string;
         descripcion: string | null;
         imagen: string;
@@ -48,8 +47,9 @@ export declare class PropertyService {
         amueblado: boolean;
         ciudad: string;
         metrosCuadrados: number;
+        userId: number;
+        id: number;
         createdAt: Date;
         updatedAt: Date;
-        userId: number;
     }>;
 }
