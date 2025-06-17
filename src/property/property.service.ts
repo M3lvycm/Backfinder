@@ -29,13 +29,13 @@ export class PropertyService {
     where: { userId },
   });
 }
-  findPropertyByID(id: number): Promise<Property | null> {
-    return this.prisma.property.findUnique({
-      where: {
-        id,
-      },
-    });
-  }
+  // findPropertyByID(id: number): Promise<Property | null> {
+  //   return this.prisma.property.findUnique({
+  //     where: {
+  //       id,
+  //     },
+  //   });
+  // }
 
   async update(id: number, data: UpdatePropertyDto, userId: number) {
     const property = await this.prisma.property.findUnique({ where: { id } });

@@ -23,32 +23,33 @@ export class PropertyController {
   @UseGuards(JwtAuthGuard)
   @Post()
   create(@Body() property: CreatePropertyDto, @Request() req) {
-    // Aquí asignamos el userId del usuario logueado, no lo recibimos en el body
+
     return this.propertyService.create({ ...property, userId: req.user.userId });
+
   }
 
   @Get()
   @UseGuards(JwtAuthGuard)
   findAll(@Req() req: any) {
-    console.log(req.user);
+        console.log(req.user.userId);
 
     return this.propertyService.findAll();
   }
 
-  @Get(':id')
-  async findOne(@Req() req: Request,@Param('id') id: string) {
-    console.log(req);
-    const propertyFound = await this.propertyService.findPropertyByID(
-      Number(id),
-    );
-    if (!propertyFound)
-      throw new NotFoundException(`Property with ID ${id} not found`);
-    return propertyFound;
-  }
+  // @Get(':id')
+  // async findOne(@Req() req: Request,@Param('id') id: string) {
+  //   const propertyFound = await this.propertyService.findPropertyByID(
+  //     Number(id),
+  //   );
+  //   if (!propertyFound)
+  //     throw new NotFoundException(`Property with ID ${id} not found`);
+  //   return propertyFound;
+  // }
   @UseGuards(JwtAuthGuard)
   @Get('by-user')
   findByUserId(@Req() req:any) {
     return this.propertyService.findByUserId(Number(req.user.userId));
+    
   }
 
   @UseGuards(JwtAuthGuard)

@@ -27,15 +27,8 @@ let PropertyController = class PropertyController {
         return this.propertyService.create({ ...property, userId: req.user.userId });
     }
     findAll(req) {
-        console.log(req.user);
+        console.log(req.user.userId);
         return this.propertyService.findAll();
-    }
-    async findOne(req, id) {
-        console.log(req);
-        const propertyFound = await this.propertyService.findPropertyByID(Number(id));
-        if (!propertyFound)
-            throw new common_1.NotFoundException(`Property with ID ${id} not found`);
-        return propertyFound;
     }
     findByUserId(req) {
         return this.propertyService.findByUserId(Number(req.user.userId));
@@ -65,14 +58,6 @@ __decorate([
     __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", void 0)
 ], PropertyController.prototype, "findAll", null);
-__decorate([
-    (0, common_1.Get)(':id'),
-    __param(0, (0, common_1.Req)()),
-    __param(1, (0, common_1.Param)('id')),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object, String]),
-    __metadata("design:returntype", Promise)
-], PropertyController.prototype, "findOne", null);
 __decorate([
     (0, common_1.UseGuards)(jwt_auth_guard_1.JwtAuthGuard),
     (0, common_1.Get)('by-user'),

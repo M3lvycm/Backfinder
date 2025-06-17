@@ -37,13 +37,6 @@ let PropertyService = class PropertyService {
             where: { userId },
         });
     }
-    findPropertyByID(id) {
-        return this.prisma.property.findUnique({
-            where: {
-                id,
-            },
-        });
-    }
     async update(id, data, userId) {
         const property = await this.prisma.property.findUnique({ where: { id } });
         if (!property || property.userId !== userId) {

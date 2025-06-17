@@ -34,21 +34,6 @@ export declare class PropertyController {
         updatedAt: Date;
         userId: number;
     }[]>;
-    findOne(req: Request, id: string): Promise<{
-        id: number;
-        titulo: string;
-        descripcion: string | null;
-        imagen: string;
-        banos: number;
-        habitaciones: number;
-        garajes: number;
-        amueblado: boolean;
-        ciudad: string;
-        metrosCuadrados: number;
-        createdAt: Date;
-        updatedAt: Date;
-        userId: number;
-    }>;
     findByUserId(req: any): Promise<{
         id: number;
         titulo: string;

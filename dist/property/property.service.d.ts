@@ -22,7 +22,6 @@ export declare class PropertyService {
     }, never, import("@prisma/client/runtime/library").DefaultArgs, import(".prisma/client").Prisma.PrismaClientOptions>;
     findAll(): Promise<Property[]>;
     findByUserId(userId: number): Promise<Property[]>;
-    findPropertyByID(id: number): Promise<Property | null>;
     update(id: number, data: UpdatePropertyDto, userId: number): Promise<{
         id: number;
         titulo: string;
