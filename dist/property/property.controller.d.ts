@@ -14,10 +14,9 @@ export declare class PropertyController {
         amueblado: boolean;
         ciudad: string;
         metrosCuadrados: number;
-        userId: number;
-        id: number;
         createdAt: Date;
         updatedAt: Date;
+        userId: number;
     }, never, import("@prisma/client/runtime/library").DefaultArgs, import(".prisma/client").Prisma.PrismaClientOptions>;
     findAll(req: any): Promise<{
         titulo: string;
@@ -29,10 +28,9 @@ export declare class PropertyController {
         amueblado: boolean;
         ciudad: string;
         metrosCuadrados: number;
-        userId: number;
-        id: number;
         createdAt: Date;
         updatedAt: Date;
+        userId: number;
     }[]>;
     findByUserId(req: any): Promise<{
         titulo: string;
@@ -59,10 +57,9 @@ export declare class PropertyController {
         amueblado: boolean;
         ciudad: string;
         metrosCuadrados: number;
-        userId: number;
-        id: number;
         createdAt: Date;
         updatedAt: Date;
+        userId: number;
     }>;
     remove(id: string, req: any): Promise<{
         titulo: string;
@@ -74,9 +71,8 @@ export declare class PropertyController {
         amueblado: boolean;
         ciudad: string;
         metrosCuadrados: number;
-        userId: number;
-        id: number;
         createdAt: Date;
         updatedAt: Date;
+        userId: number;
     }>;
 }
