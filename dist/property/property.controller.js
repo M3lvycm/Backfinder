@@ -27,10 +27,10 @@ let PropertyController = class PropertyController {
         return this.propertyService.create({ ...property, userId: req.user.userId });
     }
     findAll(req) {
-        console.log(req.user.userId);
         return this.propertyService.findAll();
     }
     findByUserId(req) {
+        console.log(req.user.userId);
         return this.propertyService.findByUserId(Number(req.user.userId));
     }
     update(id, data, req) {
@@ -52,7 +52,6 @@ __decorate([
 ], PropertyController.prototype, "create", null);
 __decorate([
     (0, common_1.Get)(),
-    (0, common_1.UseGuards)(jwt_auth_guard_1.JwtAuthGuard),
     __param(0, (0, common_1.Req)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object]),

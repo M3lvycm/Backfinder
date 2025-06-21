@@ -29,9 +29,7 @@ export class PropertyController {
   }
 
   @Get()
-  @UseGuards(JwtAuthGuard)
   findAll(@Req() req: any) {
-        console.log(req.user.userId);
 
     return this.propertyService.findAll();
   }
@@ -45,9 +43,12 @@ export class PropertyController {
   //     throw new NotFoundException(`Property with ID ${id} not found`);
   //   return propertyFound;
   // }
+  
   @UseGuards(JwtAuthGuard)
   @Get('by-user')
   findByUserId(@Req() req:any) {
+    console.log(req.user.userId);
+
     return this.propertyService.findByUserId(Number(req.user.userId));
     
   }
