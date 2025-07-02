@@ -24,13 +24,15 @@ let PropertyController = class PropertyController {
         this.propertyService = propertyService;
     }
     create(property, req) {
-        return this.propertyService.create({ ...property, userId: req.user.userId });
+        return this.propertyService.create({
+            ...property,
+            userId: req.user.userId,
+        });
     }
     findAll(req) {
         return this.propertyService.findAll();
     }
     findByUserId(req) {
-        console.log(req.user.userId);
         return this.propertyService.findByUserId(Number(req.user.userId));
     }
     update(id, data, req) {

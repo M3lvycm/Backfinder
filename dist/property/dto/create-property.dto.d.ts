@@ -3,7 +3,7 @@ export declare class CreatePropertyDto {
     descripcion?: string;
     precio: number;
     numeroContacto: number;
-    imagen: string;
+    imagen: string[];
     banos: number;
     habitaciones: number;
     garajes: number;

@@ -4,6 +4,7 @@ import {
   IsBoolean,
   IsInt,
   IsNumber,
+  IsArray,
 } from 'class-validator';
 
 export class UpdatePropertyDto {
@@ -15,9 +16,9 @@ export class UpdatePropertyDto {
   @IsOptional()
   descripcion?: string;
 
-  @IsString()
-  @IsOptional()
-  imagen?: string;
+ @IsArray()
+@IsString({ each: true })
+imagen: string[];
 
   @IsInt()
   @IsOptional()

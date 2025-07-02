@@ -47,9 +47,9 @@ __decorate([
     __metadata("design:type", Number)
 ], CreatePropertyDto.prototype, "numeroContacto", void 0);
 __decorate([
-    (0, class_validator_1.IsString)(),
-    (0, class_validator_1.IsNotEmpty)(),
-    __metadata("design:type", String)
+    (0, class_validator_1.IsArray)(),
+    (0, class_validator_1.IsString)({ each: true }),
+    __metadata("design:type", Array)
 ], CreatePropertyDto.prototype, "imagen", void 0);
 __decorate([
     (0, class_validator_1.IsInt)(),

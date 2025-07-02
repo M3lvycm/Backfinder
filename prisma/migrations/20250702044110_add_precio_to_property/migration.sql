@@ -1,3 +1,0 @@
--- AlterTable
-ALTER TABLE `property` ADD COLUMN `precio` INTEGER NOT NULL DEFAULT 0,
-    MODIFY `imagen` LONGTEXT NOT NULL;

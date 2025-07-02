@@ -36,9 +36,9 @@ __decorate([
     __metadata("design:type", String)
 ], UpdatePropertyDto.prototype, "descripcion", void 0);
 __decorate([
-    (0, class_validator_1.IsString)(),
-    (0, class_validator_1.IsOptional)(),
-    __metadata("design:type", String)
+    (0, class_validator_1.IsArray)(),
+    (0, class_validator_1.IsString)({ each: true }),
+    __metadata("design:type", Array)
 ], UpdatePropertyDto.prototype, "imagen", void 0);
 __decorate([
     (0, class_validator_1.IsInt)(),

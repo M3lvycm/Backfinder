@@ -1,41 +1,36 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, ForbiddenException } from '@nestjs/common';
 import { CreatePropertyDto } from './dto/create-property.dto';
 import { UpdatePropertyDto } from './dto/update-property.dto';
-import { ForbiddenException } from '@nestjs/common';
 import { PrismaService } from 'src/prisma.service';
 import { Property } from '@prisma/client';
+
 @Injectable()
 export class PropertyService {
   constructor(private prisma: PrismaService) {}
+
   create(property: CreatePropertyDto) {
-    const { userId, ...rest } = property;
+    const { userId, imagen, ...rest } = property;
+
     return this.prisma.property.create({
       data: {
         ...rest,
+        imagen, // Ahora directamente como string[]
         user: {
           connect: { id: userId },
         },
       },
     });
   }
-  
 
-  findAll(): Promise<Property[]> {
-    return this.prisma.property.findMany();
+  async findAll(): Promise<Property[]> {
+    return this.prisma.property.findMany(); // imagen ya viene como string[]
   }
 
- findByUserId(userId: number): Promise<Property[]> {
-  return this.prisma.property.findMany({
-    where: { userId },
-  });
-}
-  // findPropertyByID(id: number): Promise<Property | null> {
-  //   return this.prisma.property.findUnique({
-  //     where: {
-  //       id,
-  //     },
-  //   });
-  // }
+  async findByUserId(userId: number): Promise<Property[]> {
+    return this.prisma.property.findMany({
+      where: { userId },
+    });
+  }
 
   async update(id: number, data: UpdatePropertyDto, userId: number) {
     const property = await this.prisma.property.findUnique({ where: { id } });
@@ -46,7 +41,7 @@ export class PropertyService {
 
     return this.prisma.property.update({
       where: { id },
-      data,
+      data, // imagen se pasa como string[] directamente
     });
   }
 

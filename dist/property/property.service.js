@@ -11,7 +11,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.PropertyService = void 0;
 const common_1 = require("@nestjs/common");
-const common_2 = require("@nestjs/common");
 const prisma_service_1 = require("../prisma.service");
 let PropertyService = class PropertyService {
     prisma;
@@ -19,20 +18,21 @@ let PropertyService = class PropertyService {
         this.prisma = prisma;
     }
     create(property) {
-        const { userId, ...rest } = property;
+        const { userId, imagen, ...rest } = property;
         return this.prisma.property.create({
             data: {
                 ...rest,
+                imagen,
                 user: {
                     connect: { id: userId },
                 },
             },
         });
     }
-    findAll() {
+    async findAll() {
         return this.prisma.property.findMany();
     }
-    findByUserId(userId) {
+    async findByUserId(userId) {
         return this.prisma.property.findMany({
             where: { userId },
         });
@@ -40,7 +40,7 @@ let PropertyService = class PropertyService {
     async update(id, data, userId) {
         const property = await this.prisma.property.findUnique({ where: { id } });
         if (!property || property.userId !== userId) {
-            throw new common_2.ForbiddenException('No puedes editar esta propiedad');
+            throw new common_1.ForbiddenException('No puedes editar esta propiedad');
         }
         return this.prisma.property.update({
             where: { id },
@@ -50,7 +50,7 @@ let PropertyService = class PropertyService {
     async remove(id, userId) {
         const property = await this.prisma.property.findUnique({ where: { id } });
         if (!property || property.userId !== userId) {
-            throw new common_2.ForbiddenException('No puedes eliminar esta propiedad');
+            throw new common_1.ForbiddenException('No puedes eliminar esta propiedad');
         }
         return this.prisma.property.delete({
             where: { id },

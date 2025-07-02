@@ -5,6 +5,7 @@ import {
   IsBoolean,
   IsInt,
   IsNumber,
+  IsArray,
 } from 'class-validator';
 
 export class CreatePropertyDto {
@@ -26,10 +27,10 @@ export class CreatePropertyDto {
   @IsInt()
   @IsOptional()
   numeroContacto: number;
-  
-  @IsString()
-  @IsNotEmpty()
-  imagen: string;
+
+ @IsArray()
+@IsString({ each: true })
+imagen: string[];
 
   @IsInt()
   @IsNotEmpty()

@@ -9,7 +9,7 @@ export declare class PropertyController {
         descripcion: string | null;
         precio: number;
         numeroContacto: number;
-        imagen: string;
+        imagen: string[];
         banos: number;
         habitaciones: number;
         garajes: number;
@@ -26,7 +26,7 @@ export declare class PropertyController {
         descripcion: string | null;
         precio: number;
         numeroContacto: number;
-        imagen: string;
+        imagen: string[];
         banos: number;
         habitaciones: number;
         garajes: number;
@@ -43,7 +43,7 @@ export declare class PropertyController {
         descripcion: string | null;
         precio: number;
         numeroContacto: number;
-        imagen: string;
+        imagen: string[];
         banos: number;
         habitaciones: number;
         garajes: number;
@@ -60,7 +60,7 @@ export declare class PropertyController {
         descripcion: string | null;
         precio: number;
         numeroContacto: number;
-        imagen: string;
+        imagen: string[];
         banos: number;
         habitaciones: number;
         garajes: number;
@@ -77,7 +77,7 @@ export declare class PropertyController {
         descripcion: string | null;
         precio: number;
         numeroContacto: number;
-        imagen: string;
+        imagen: string[];
         banos: number;
         habitaciones: number;
         garajes: number;
