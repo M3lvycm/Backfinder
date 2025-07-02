@@ -14,6 +14,8 @@ const class_validator_1 = require("class-validator");
 class CreatePropertyDto {
     titulo;
     descripcion;
+    precio;
+    numeroContacto;
     imagen;
     banos;
     habitaciones;
@@ -34,6 +36,16 @@ __decorate([
     (0, class_validator_1.IsOptional)(),
     __metadata("design:type", String)
 ], CreatePropertyDto.prototype, "descripcion", void 0);
+__decorate([
+    (0, class_validator_1.IsInt)(),
+    (0, class_validator_1.IsOptional)(),
+    __metadata("design:type", Number)
+], CreatePropertyDto.prototype, "precio", void 0);
+__decorate([
+    (0, class_validator_1.IsInt)(),
+    (0, class_validator_1.IsOptional)(),
+    __metadata("design:type", Number)
+], CreatePropertyDto.prototype, "numeroContacto", void 0);
 __decorate([
     (0, class_validator_1.IsString)(),
     (0, class_validator_1.IsNotEmpty)(),

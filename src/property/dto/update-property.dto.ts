@@ -23,6 +23,14 @@ export class UpdatePropertyDto {
   @IsOptional()
   banos?: number;
 
+   @IsInt()
+  @IsOptional()
+  precio: number;
+
+  @IsInt()
+  @IsOptional()
+  numeroContacto: number;
+
   @IsInt()
   @IsOptional()
   habitaciones?: number;

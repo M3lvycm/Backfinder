@@ -3,6 +3,8 @@ export declare class UpdatePropertyDto {
     descripcion?: string;
     imagen?: string;
     banos?: number;
+    precio: number;
+    numeroContacto: number;
     habitaciones?: number;
     garajes?: number;
     amueblado?: boolean;

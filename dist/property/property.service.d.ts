@@ -8,6 +8,8 @@ export declare class PropertyService {
     create(property: CreatePropertyDto): import(".prisma/client").Prisma.Prisma__PropertyClient<{
         titulo: string;
         descripcion: string | null;
+        precio: number;
+        numeroContacto: number;
         imagen: string;
         banos: number;
         habitaciones: number;
@@ -25,6 +27,8 @@ export declare class PropertyService {
     update(id: number, data: UpdatePropertyDto, userId: number): Promise<{
         titulo: string;
         descripcion: string | null;
+        precio: number;
+        numeroContacto: number;
         imagen: string;
         banos: number;
         habitaciones: number;
@@ -40,6 +44,8 @@ export declare class PropertyService {
     remove(id: number, userId: number): Promise<{
         titulo: string;
         descripcion: string | null;
+        precio: number;
+        numeroContacto: number;
         imagen: string;
         banos: number;
         habitaciones: number;

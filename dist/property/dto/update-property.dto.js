@@ -16,6 +16,8 @@ class UpdatePropertyDto {
     descripcion;
     imagen;
     banos;
+    precio;
+    numeroContacto;
     habitaciones;
     garajes;
     amueblado;
@@ -43,6 +45,16 @@ __decorate([
     (0, class_validator_1.IsOptional)(),
     __metadata("design:type", Number)
 ], UpdatePropertyDto.prototype, "banos", void 0);
+__decorate([
+    (0, class_validator_1.IsInt)(),
+    (0, class_validator_1.IsOptional)(),
+    __metadata("design:type", Number)
+], UpdatePropertyDto.prototype, "precio", void 0);
+__decorate([
+    (0, class_validator_1.IsInt)(),
+    (0, class_validator_1.IsOptional)(),
+    __metadata("design:type", Number)
+], UpdatePropertyDto.prototype, "numeroContacto", void 0);
 __decorate([
     (0, class_validator_1.IsInt)(),
     (0, class_validator_1.IsOptional)(),

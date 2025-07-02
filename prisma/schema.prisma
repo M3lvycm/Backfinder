@@ -16,9 +16,11 @@ datasource db {
 model Property {
   id              Int      @id @default(autoincrement())
   titulo          String
-  descripcion     String?
+  descripcion     String? 
   imagen          String   @db.LongText
   banos           Int
+  precio          Int      @default(0)
+  numeroContacto  Int      @default(0)
   habitaciones    Int
   garajes         Int
   amueblado       Boolean

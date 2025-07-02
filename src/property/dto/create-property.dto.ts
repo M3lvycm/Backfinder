@@ -16,7 +16,17 @@ export class CreatePropertyDto {
   @IsString()
   @IsOptional()
   descripcion?: string;
+  
 
+  @IsInt()
+  @IsOptional()
+  precio: number;
+
+  
+  @IsInt()
+  @IsOptional()
+  numeroContacto: number;
+  
   @IsString()
   @IsNotEmpty()
   imagen: string;
