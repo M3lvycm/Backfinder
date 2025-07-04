@@ -9,16 +9,18 @@ generator client {
 }
 
 datasource db {
-  provider = "mysql"
+  provider = "postgresql"
   url      = env("DATABASE_URL")
 }
 
 model Property {
   id              Int      @id @default(autoincrement())
   titulo          String
-  descripcion     String?
-  imagen          String   @db.MediumText
+  descripcion     String? 
+  imagen          String[]
   banos           Int
+  precio          Int      @default(0)
+  numeroContacto  Int      @default(0)
   habitaciones    Int
   garajes         Int
   amueblado       Boolean
