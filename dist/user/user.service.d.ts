@@ -20,5 +20,3 @@ export declare class UsersService {
         verified: boolean;
     }>;
 }
-//     }>;
-// }
