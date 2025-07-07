@@ -1,0 +1,3 @@
+-- AlterTable
+ALTER TABLE "Property" ALTER COLUMN "precio" SET DATA TYPE BIGINT,
+ALTER COLUMN "numeroContacto" SET DATA TYPE BIGINT;

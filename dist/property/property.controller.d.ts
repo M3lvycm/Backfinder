@@ -7,8 +7,8 @@ export declare class PropertyController {
     create(property: CreatePropertyDto, req: any): import(".prisma/client").Prisma.Prisma__PropertyClient<{
         titulo: string;
         descripcion: string | null;
-        precio: number;
-        numeroContacto: number;
+        precio: bigint;
+        numeroContacto: bigint;
         imagen: string[];
         banos: number;
         habitaciones: number;
@@ -24,8 +24,8 @@ export declare class PropertyController {
     findAll(req: any): Promise<{
         titulo: string;
         descripcion: string | null;
-        precio: number;
-        numeroContacto: number;
+        precio: bigint;
+        numeroContacto: bigint;
         imagen: string[];
         banos: number;
         habitaciones: number;
@@ -41,8 +41,8 @@ export declare class PropertyController {
     findByUserId(req: any): Promise<{
         titulo: string;
         descripcion: string | null;
-        precio: number;
-        numeroContacto: number;
+        precio: bigint;
+        numeroContacto: bigint;
         imagen: string[];
         banos: number;
         habitaciones: number;
@@ -58,8 +58,8 @@ export declare class PropertyController {
     update(id: string, data: UpdatePropertyDto, req: any): Promise<{
         titulo: string;
         descripcion: string | null;
-        precio: number;
-        numeroContacto: number;
+        precio: bigint;
+        numeroContacto: bigint;
         imagen: string[];
         banos: number;
         habitaciones: number;
@@ -75,8 +75,8 @@ export declare class PropertyController {
     remove(id: string, req: any): Promise<{
         titulo: string;
         descripcion: string | null;
-        precio: number;
-        numeroContacto: number;
+        precio: bigint;
+        numeroContacto: bigint;
         imagen: string[];
         banos: number;
         habitaciones: number;

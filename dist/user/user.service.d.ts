@@ -5,9 +5,7 @@ export declare class UsersService {
     findByEmail(email: string): Promise<{
         id: number;
         email: string;
-        verificationToken: string | null;
         password: string;
-        verified: boolean;
     } | null>;
     createUser(data: {
         email: string;
@@ -15,8 +13,6 @@ export declare class UsersService {
     }): Promise<{
         id: number;
         email: string;
-        verificationToken: string | null;
         password: string;
-        verified: boolean;
     }>;
 }
