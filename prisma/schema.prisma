@@ -19,8 +19,8 @@ model Property {
   descripcion     String? 
   imagen          String[]
   banos           Int
-  precio          Int      @default(0)
-  numeroContacto  Int      @default(0)
+  precio          String      
+  numeroContacto  String     
   habitaciones    Int
   garajes         Int
   amueblado       Boolean
